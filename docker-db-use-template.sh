@@ -31,7 +31,7 @@ function parse_arguments() {
   PG_USER=$(whoami)
 
   if [ "$#" -lt 1 ]; then
-    echo -e "Usage: $0 [--pg-user=value] project_name" >&2
+    echo -e "Usage: $0 [--pg-version=value] [--pg-user=value] project_name" >&2
     exit 1
   fi
 
