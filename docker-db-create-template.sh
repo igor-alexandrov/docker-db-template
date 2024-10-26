@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 SUCCESS='\033[0;32m'
 WARNING='\033[0;33m'
 FAILURE='\033[0;31m'
