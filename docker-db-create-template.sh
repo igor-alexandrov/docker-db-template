@@ -109,7 +109,7 @@ function run_container() {
 
   echo -n -e "Starting container $(print_bold $container_name)\t\t\t"
   docker run --name ${container_name} \
-    -p 15432:5432 \
+    -p 5432:5432 \
     -e POSTGRES_USER=${PG_USER} \
     -e POSTGRES_DB=${database_name} \
     -e POSTGRES_HOST_AUTH_METHOD=trust \
@@ -124,7 +124,7 @@ function load_dump() {
   echo -n -e "into $(print_bold $database_name)\t\t\t\t\t"
   psql -d ${database_name} \
     -h localhost \
-    -p 15432 < ${FILE_NAME} > /dev/null
+    -p 5432 < ${FILE_NAME} > /dev/null
   print_success "done"
 }
 

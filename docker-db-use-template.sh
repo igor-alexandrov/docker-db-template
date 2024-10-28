@@ -117,7 +117,7 @@ function run_container() {
 
   echo -n -e "Starting container $(print_bold $container_name)\t\t\t"
   docker run --name ${container_name} \
-    -p 15432:5432 \
+    -p 5432:5432 \
     -e POSTGRES_USER=${PG_USER} \
     -e POSTGRES_DB=${database_name} \
     -e POSTGRES_HOST_AUTH_METHOD=trust \
@@ -135,7 +135,7 @@ ensure_docker_volume ${VOLUME_NAME}
 copy_template_volume ${VOLUME_NAME}
 run_container ${CONTAINER_NAME} ${DATABASE_NAME} ${VOLUME_NAME}
 
-echo -e "\nDatabase $(print_bold ${DATABASE_NAME}) is running on port $(print_bold 15432)"
+echo -e "\nDatabase $(print_bold ${DATABASE_NAME}) is running on port $(print_bold 5432)"
 
 end_time=$(date +%s)
 elapsed_time=$((end_time - start_time))
