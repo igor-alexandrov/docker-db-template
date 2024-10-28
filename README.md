@@ -12,13 +12,13 @@ This project consists of two shell scripts designed to help manage PostgreSQL da
 Use `docker-db-create-template.sh` to set up a PostgreSQL container, load a SQL dump file, and create a reusable development template.
 
 ``` bash
-./docker-db-create-template.sh [--pg-version=your_version] [--pg-user=your_user] project_name file_name
+./docker-db-create-template.sh [--pg-version=your_version] [--pg-user=your_user] project_name file_path
 ```
 
 * `--pg-version`: (Optional) PostgreSQL version. Default is `latest`.
 * `--pg-user`: (Optional) PostgreSQL user. Default is the current user.
 * `project_name`: The name of your project. This will be used to name the Docker container, volume, and database.
-* `file_name`: The SQL dump file to be loaded into the database.
+* `file_path`: The SQL dump file to be loaded into the database.
 
 **Example**
 

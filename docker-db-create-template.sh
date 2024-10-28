@@ -31,13 +31,13 @@ function parse_arguments() {
   # Default to current user if no --pg-user argument is passed
   PG_USER=$(whoami)
 
-  # Ensure at least two arguments are passed (project_name and file_name)
+  # Ensure at least two arguments are passed (project_name and file_path)
   if [ "$#" -lt 2 ]; then
-    echo -e "Usage: $0 [--pg-version=value] [--pg-user=value] project_name file_name" >&2
+    echo -e "Usage: $0 [--pg-version=value] [--pg-user=value] project_name file_path" >&2
     exit 1
   fi
 
- # Parse all arguments except the last two (project_name and file_name)
+ # Parse all arguments except the last two (project_name and file_path)
   for arg in "${@:1:$#-2}"; do
     case "$arg" in
       --pg-user=*)
@@ -60,8 +60,8 @@ function parse_arguments() {
   VOLUME_NAME="${PROJECT_NAME}-development-template"
   DATABASE_NAME="${PROJECT_NAME}_development"
 
-  # The last argument is the file_name
-  FILE_NAME="$2"
+  # The last argument is the file_path
+  FILE_PATH="$2"
 }
 
 function stop_container_if_running() {
@@ -120,11 +120,11 @@ function run_container() {
 function load_dump() {
   local database_name="$1"
 
-  echo -e "\tLoading ${FILE_NAME}..."
+  echo -e "\tLoading ${FILE_PATH}..."
   echo -n -e "into $(print_bold $database_name)\t\t\t\t\t"
   psql -d ${database_name} \
     -h localhost \
-    -p 5432 < ${FILE_NAME} > /dev/null
+    -p 5432 < ${FILE_PATH} > /dev/null
   print_success "done"
 }
 
