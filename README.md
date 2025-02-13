@@ -31,7 +31,7 @@ This command will:
 * Stop and remove any existing container named `my_project-development-template`.
 * Create a new Docker volume for the database.
 * Start a new PostgreSQL 16.4 container.
-* Load the SQL dump (`db_dump.sq`l) into the `my_project_development` database.
+* Load the SQL dump (`db_dump.sql`) into the `my_project_development` database.
 
 ### Using the Database Template
 
